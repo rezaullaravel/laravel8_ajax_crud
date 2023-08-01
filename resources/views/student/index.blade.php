@@ -162,9 +162,25 @@ function storeStudent(){
            $('.table').load(location.href+' .table');
         },
         error:function(error){
-            $('#nameError').text(error.responseJSON.errors.name);
-            $('#emailError').text(error.responseJSON.errors.email);
-            $('#phoneError').text(error.responseJSON.errors.phone);
+            if(error.responseJSON.errors.name){
+                     $('#nameError').text(error.responseJSON.errors.name);
+            } else{
+                $('#nameError').text('');
+            }
+
+            if(error.responseJSON.errors.email){
+               $('#emailError').text(error.responseJSON.errors.email);
+            } else{
+                 $('#emailError').text('');
+            }
+
+            if(error.responseJSON.errors.phone){
+                 $('#phoneError').text(error.responseJSON.errors.phone);
+            } else{
+                 $('#phoneError').text('');
+            }
+
+
 
         }
     })
